@@ -1,8 +1,8 @@
-// Meta Pixel (opcional). Defina VITE_META_PIXEL_ID num arquivo .env para medir
-// os cliques no WhatsApp como evento "Contact" no Gerenciador de Anúncios.
+// Meta Pixel: PageView ao abrir a página e "Contact" a cada clique no WhatsApp.
+// ID do Pixel fixo no código (é público; não precisa de .env).
 import { publico } from './publico.js'
 
-const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID
+const PIXEL_ID = '1597383025515890'
 
 export function initPixel() {
   if (!PIXEL_ID || window.fbq) return
