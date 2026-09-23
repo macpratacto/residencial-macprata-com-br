@@ -15,7 +15,7 @@ const icones = {
   <section id="imovel">
     <div class="wrap grid">
       <div class="photo">
-        <img :src="'img/primeiro/p01.jpg'" alt="Sala ampla do 1º andar com cozinha americana ao fundo" width="960" height="1280" loading="lazy" />
+        <img :src="'img/fachada.jpg'" alt="Fachada do imóvel de 3 pavimentos no bairro Novo Paraíso, Aracaju" width="685" height="818" loading="lazy" />
       </div>
       <div>
         <div class="sec-head">
