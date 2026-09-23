@@ -18,5 +18,5 @@ A pasta `dist/` é estática: dá para publicar direto na Netlify, Vercel, Hosti
   (a renda total e o retorno % são calculados sozinhos a partir dos aluguéis)
 - **Fotos e vídeos:** coloque os arquivos em `public/img/...` e adicione em `fotos` no mesmo arquivo.
   Use `grupo: '1º andar'` / `'2º andar'` e os filtros aparecem automaticamente.
-- **Meta Pixel:** ID 1597383025515890 configurado em `src/lib/pixel.js` (PageView + Contact).
+- **Meta Pixel:** código padrão da Meta no `<head>` do `index.html` (ID 1597383025515890, PageView).
   Cada clique no WhatsApp envia `Contact` com a seção (`content_name`) e a cidade do anúncio (`content_category`).
