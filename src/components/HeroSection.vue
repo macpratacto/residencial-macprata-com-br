@@ -3,20 +3,21 @@ import WaButton from './WaButton.vue'
 import { imovel } from '../data/imovel.js'
 import { rendaMensal, retornoAtual } from '../lib/investimento.js'
 import { reais, percent } from '../lib/format.js'
+import { publico } from '../lib/publico.js'
 </script>
 
 <template>
   <header class="hero">
     <div class="wrap grid">
       <div class="copy">
-        <span class="kicker"><span class="dot"></span>Empresários de Itabaiana · Imóvel 100% locado</span>
+        <span class="kicker"><span class="dot"></span>{{ publico.kicker }} · Direto com o proprietário</span>
         <h1>
           <span class="big num">{{ reais(rendaMensal) }}<small>/mês</small></span>
           <span class="rest">de renda imobiliária desde o primeiro dia</span>
         </h1>
         <p class="lede">
-          {{ imovel.pavimentos.length }} casas independentes em Aracaju, todas alugadas e gerando renda hoje.
-          <strong>Investimento de {{ reais(imovel.valor) }}</strong> num imóvel pronto, sem obra e sem espera por inquilino.
+          {{ imovel.pavimentos.length }} casas independentes {{ publico.heroLocal }}, todas alugadas e gerando renda hoje.
+          <strong>Investimento de {{ reais(imovel.valor) }}</strong> num imóvel pronto, sem obra e sem espera por inquilino. <strong>Aberto a negociação e aceitamos veículo como parte do pagamento.</strong>
         </p>
         <div class="cta">
           <WaButton label="Quero receber os detalhes" origem="hero" />
@@ -35,6 +36,7 @@ import { reais, percent } from '../lib/format.js'
           <div>
             <div class="lbl">Valor do investimento</div>
             <div class="val num">{{ reais(imovel.valor) }}</div>
+            <div class="cond">Negociável · aceita veículo</div>
           </div>
           <span class="badge">100% locado</span>
         </div>
@@ -94,6 +96,7 @@ h1 { font-family: var(--display); font-weight: 700; text-transform: uppercase; l
 .tag { position: absolute; left: 18px; right: 18px; bottom: 18px; z-index: 2; display: flex; justify-content: space-between; align-items: end; gap: 12px; }
 .lbl { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-hi); font-weight: 700; }
 .val { font-family: var(--display); font-weight: 700; font-size: 44px; line-height: 1; white-space: nowrap; }
+.cond { margin-top: 6px; font-size: 13px; font-weight: 700; color: var(--gold-hi); }
 .badge {
   background: var(--gold); color: var(--ink); font-weight: 800; font-size: 13px;
   padding: 8px 12px; border-radius: 8px; text-transform: uppercase; letter-spacing: .06em; white-space: nowrap;

@@ -2,6 +2,7 @@
 
 export const contato = {
   nome: 'Mac Prata',
+  papel: 'Proprietário',
   telefone: '(79) 99178-8888',
   whatsapp: '5579991788888',
   mensagem: 'Olá, Mac! Vi o anúncio do imóvel de renda no Novo Paraíso (R$ 4.100/mês) e quero mais informações.'
@@ -13,7 +14,10 @@ export const imovel = {
   areaConstruida: '~340 m²',
   bairro: 'Novo Paraíso',
   cidade: 'Aracaju / SE',
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Novo+Para%C3%ADso+Aracaju+SE',
+  endereco: 'R. Amador Bueno, 386',
+  cep: '49082-030',
+  mapsUrl: 'https://share.google/iHgOlewkbleWgIPON',
+  mapsBusca: 'R. Amador Bueno, 386 - Novo Paraíso, Aracaju - SE, 49082-030',
   // Do último andar para o térreo, como na fachada
   pavimentos: [
     { nome: '2º andar', aluguel: 1500, detalhe: '3 quartos · 1 suíte' },
@@ -27,7 +31,7 @@ export const imovel = {
     { icone: 'carro', titulo: 'Garagem para 2 carros', texto: 'Vagas enfileiradas no térreo.' },
     { icone: 'check', titulo: 'Pronto e 100% locado', texto: 'Sem obra e sem espera: a renda começa no primeiro mês.' }
   ],
-  proximidades: ['Rodoviária', 'Havan', 'Hospital público', 'Padarias', 'Grandes redes de supermercado', 'Fácil acesso para quem vem de Itabaiana']
+  proximidades: ['Rodoviária', 'Havan', 'Hospital público', 'Padarias', 'Grandes redes de supermercado']
 }
 
 // Galeria: adicione as fotos de cada pavimento em /public/img e liste aqui.

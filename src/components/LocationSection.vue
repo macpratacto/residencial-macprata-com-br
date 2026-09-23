@@ -1,6 +1,14 @@
 <script setup>
 import { imovel } from '../data/imovel.js'
 import SectionCta from './SectionCta.vue'
+import { publico } from '../lib/publico.js'
+import { reais } from '../lib/format.js'
+
+const proximidades = publico.proximidade ? [...imovel.proximidades, publico.proximidade] : imovel.proximidades
+
+const q = encodeURIComponent(imovel.mapsBusca)
+const mapaEmbed = `https://maps.google.com/maps?q=${q}&z=16&output=embed`
+const rotaUrl = `https://www.google.com/maps/dir/?api=1&destination=${q}`
 </script>
 
 <template>
@@ -12,31 +20,58 @@ import SectionCta from './SectionCta.vue'
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z" /><circle cx="12" cy="9" r="2.6" /></svg>
           <div><b>{{ imovel.bairro }}</b><span>{{ imovel.cidade }} · a capital de Sergipe</span></div>
         </div>
-        <p class="lede">Bairro residencial com demanda constante por aluguel e tudo o que o inquilino precisa por perto.</p>
-        <a class="btn-ghost" :href="imovel.mapsUrl" target="_blank" rel="noopener">Ver o bairro no Google Maps ↗</a>
+        <address>
+          {{ imovel.endereco }} · {{ imovel.bairro }}<br />
+          {{ imovel.cidade.replace(' / ', '/') }} · CEP {{ imovel.cep }}
+        </address>
+        <p class="lede">Bairro residencial com demanda constante por aluguel e tudo o que o inquilino precisa por perto. Essa localização dá ao imóvel capacidade para gerar até {{ reais(imovel.rendaPotencial) }}/mês de renda.</p>
+        <ul class="poi">
+          <li v-for="p in proximidades" :key="p">{{ p }}</li>
+        </ul>
+        <div class="links">
+          <a class="btn-ghost" :href="imovel.mapsUrl" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
+          <a class="btn-ghost" :href="rotaUrl" target="_blank" rel="noopener">Traçar rota ↗</a>
+        </div>
         <SectionCta
-          class="loc-cta"
-          label="Quero o endereço exato"
+          label="Quero agendar uma visita"
           origem="localizacao"
-          mensagem="Olá, Mac! Pode me enviar o endereço exato do imóvel de 3 casas no Novo Paraíso?"
+          mensagem="Olá, Mac! Vi a localização do imóvel na R. Amador Bueno, 386 (Novo Paraíso) e quero agendar uma visita."
           nota=""
         />
       </div>
-      <ul class="poi">
-        <li v-for="p in imovel.proximidades" :key="p">{{ p }}</li>
-      </ul>
+
+      <div class="map">
+        <iframe
+          :src="mapaEmbed"
+          title="Mapa: R. Amador Bueno, 386, Novo Paraíso, Aracaju/SE"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped>
-.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.card { display: grid; gap: 18px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch; }
+.card { display: grid; gap: 18px; align-content: start; }
 .pin { display: flex; gap: 14px; align-items: center; }
 .pin svg { width: 36px; height: 36px; color: var(--gold); flex: none; }
 .pin b { font-family: var(--display); font-size: 30px; text-transform: uppercase; line-height: 1; display: block; }
 .pin span { color: var(--muted); }
-.poi { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-.poi li { border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; font-weight: 600; font-size: 15px; background: rgba(255, 255, 255, .02); }
-@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+address { font-style: normal; font-size: 18px; font-weight: 700; line-height: 1.45; padding-left: 16px; border-left: 2px solid var(--gold); }
+.poi { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.poi li { border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; font-weight: 600; font-size: 14px; background: rgba(255, 255, 255, .02); }
+.links { display: flex; flex-wrap: wrap; gap: 4px 24px; }
+.card :deep(.section-cta) { margin-top: 8px; }
+.map {
+  border-radius: var(--r); overflow: hidden; border: 1px solid var(--line);
+  min-height: 420px; background: var(--ink-3);
+}
+.map iframe { display: block; width: 100%; height: 100%; min-height: 420px; border: 0; filter: saturate(.85); }
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .map, .map iframe { min-height: 320px; }
+}
 </style>

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import WaButton from './WaButton.vue'
 import { contato } from '../data/imovel.js'
+import { publico } from '../lib/publico.js'
 
 const copiado = ref(false)
 async function copiar() {
@@ -25,13 +26,13 @@ async function copiar() {
       <div class="box">
         <div>
           <span class="eyebrow">Agende uma visita</span>
-          <h2 class="title">Renda na capital, <em>pronta para você</em></h2>
-          <p class="lede">Chame no WhatsApp para receber fotos de cada casa, documentação e valores dos contratos, ou para marcar uma visita ao imóvel.</p>
+          <h2 class="title">{{ publico.contatoTitulo[0] }} <em>{{ publico.contatoTitulo[1] }}</em></h2>
+          <p class="lede">Fale direto com o proprietário, Mac Prata, para receber documentação e detalhes dos contratos, ou para marcar uma visita ao imóvel.</p>
         </div>
         <div class="contact">
           <WaButton label="Falar no WhatsApp" origem="contato" />
           <span id="telefone" class="phone num">{{ contato.telefone }}</span>
-          <span class="who">{{ contato.nome }}</span>
+          <span class="who">{{ contato.nome }} <small>· {{ contato.papel }}</small></span>
           <button class="copy" type="button" @click="copiar">{{ copiado ? 'Número copiado' : 'Copiar número' }}</button>
         </div>
       </div>
@@ -50,6 +51,7 @@ async function copiar() {
 .contact { display: grid; gap: 14px; justify-items: start; }
 .phone { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1; user-select: all; }
 .who { color: var(--gold); font-weight: 700; }
+.who small { color: var(--muted); font-size: 14px; font-weight: 600; }
 .copy { background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; font: 600 13px var(--body); cursor: pointer; }
 .copy:hover { color: var(--paper); }
 @media (max-width: 900px) { .box { grid-template-columns: 1fr; } }

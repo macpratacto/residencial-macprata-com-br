@@ -1,5 +1,7 @@
 // Meta Pixel (opcional). Defina VITE_META_PIXEL_ID num arquivo .env para medir
 // os cliques no WhatsApp como evento "Contact" no Gerenciador de Anúncios.
+import { publico } from './publico.js'
+
 const PIXEL_ID = import.meta.env.VITE_META_PIXEL_ID
 
 export function initPixel() {
@@ -16,5 +18,5 @@ export function initPixel() {
 }
 
 export function trackContact(origem) {
-  if (window.fbq) window.fbq('track', 'Contact', { content_name: origem })
+  if (window.fbq) window.fbq('track', 'Contact', { content_name: origem, content_category: publico.nome || 'sem-cidade' })
 }

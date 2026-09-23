@@ -9,7 +9,7 @@ import { reais } from '../lib/format.js'
   <div class="sticky">
     <div class="info">
       <b class="num">{{ reais(imovel.valor) }}</b>
-      <span>{{ reais(rendaMensal) }}/mês de renda</span>
+      <span>{{ reais(rendaMensal) }}/mês · negociável · aceita veículo</span>
     </div>
     <WaButton class="cta" label="Chamar no WhatsApp" origem="barra-fixa" />
   </div>

@@ -36,7 +36,7 @@ const largura = (v) => `${(v / maiorAluguel) * 100}%`
           <dl class="num">
             <div><dt>Por ano</dt><dd>{{ reais(rendaAnual) }}</dd></div>
             <div><dt>Ocupação</dt><dd>{{ imovel.pavimentos.length }} de {{ imovel.pavimentos.length }} casas</dd></div>
-            <div><dt>Potencial com melhorias</dt><dd>até {{ reais(imovel.rendaPotencial) }}/mês</dd></div>
+            <div><dt>Potencial do bairro</dt><dd>até {{ reais(imovel.rendaPotencial) }}/mês</dd></div>
           </dl>
         </div>
       </div>
