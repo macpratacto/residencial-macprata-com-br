@@ -27,7 +27,7 @@ body {
   padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px));
   -webkit-font-smoothing: antialiased;
 }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 p { margin: 0; }

@@ -1,5 +1,6 @@
 <script setup>
 import { imovel } from '../data/imovel.js'
+import SectionCta from './SectionCta.vue'
 </script>
 
 <template>
@@ -13,6 +14,13 @@ import { imovel } from '../data/imovel.js'
         </div>
         <p class="lede">Bairro residencial com demanda constante por aluguel e tudo o que o inquilino precisa por perto.</p>
         <a class="btn-ghost" :href="imovel.mapsUrl" target="_blank" rel="noopener">Ver o bairro no Google Maps ↗</a>
+        <SectionCta
+          class="loc-cta"
+          label="Quero o endereço exato"
+          origem="localizacao"
+          mensagem="Olá, Mac! Pode me enviar o endereço exato do imóvel de 3 casas no Novo Paraíso?"
+          nota=""
+        />
       </div>
       <ul class="poi">
         <li v-for="p in imovel.proximidades" :key="p">{{ p }}</li>

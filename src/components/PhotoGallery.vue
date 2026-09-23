@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { fotos } from '../data/imovel.js'
+import SectionCta from './SectionCta.vue'
 
 const LIMITE = 8 // quantas mídias aparecem antes do "Ver todas"
 
@@ -56,6 +57,12 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKey))
       <button v-if="filtradas.length > LIMITE && !expandida" class="more" type="button" @click="expandida = true">
         Ver todas as {{ filtradas.length }} fotos e vídeos
       </button>
+      <SectionCta
+        label="Quero agendar uma visita"
+        origem="fotos"
+        mensagem="Olá, Mac! Vi as fotos e vídeos das 3 casas no Novo Paraíso e quero agendar uma visita."
+        nota="Veja pessoalmente as 3 casas."
+      />
     </div>
 
     <Teleport to="body">

@@ -1,5 +1,6 @@
 <script setup>
 import { imovel } from '../data/imovel.js'
+import SectionCta from './SectionCta.vue'
 
 const icones = {
   casa: '<path d="M3 21V9l9-6 9 6v12"/><path d="M9 21v-6h6v6"/>',
@@ -29,6 +30,12 @@ const icones = {
             <div><b>{{ d.titulo }}</b><span>{{ d.texto }}</span></div>
           </li>
         </ul>
+        <SectionCta
+          label="Quero agendar uma visita"
+          origem="imovel"
+          mensagem="Olá, Mac! Quero agendar uma visita ao imóvel de 3 casas no Novo Paraíso. Quais dias e horários você tem disponíveis?"
+          nota="Visitas agendadas com o proprietário."
+        />
       </div>
     </div>
   </section>
@@ -36,7 +43,12 @@ const icones = {
 
 <style scoped>
 .grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; }
-.photo { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); }
+.photo {
+  border-radius: 18px; overflow: hidden; border: 1px solid var(--line);
+  aspect-ratio: 4 / 5; max-width: 100%; position: sticky; top: calc(24px + env(safe-area-inset-top, 0px));
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 900px) { .photo { position: static; aspect-ratio: 4 / 3.4; } }
 .list { list-style: none; margin: 0; padding: 0; display: grid; }
 li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding-block: 18px; border-bottom: 1px solid var(--line); }
 li:first-child { border-top: 1px solid var(--line); }

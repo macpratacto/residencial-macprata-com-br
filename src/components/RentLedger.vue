@@ -2,6 +2,7 @@
 import { imovel } from '../data/imovel.js'
 import { rendaMensal, rendaAnual, maiorAluguel } from '../lib/investimento.js'
 import { reais } from '../lib/format.js'
+import SectionCta from './SectionCta.vue'
 
 const largura = (v) => `${(v / maiorAluguel) * 100}%`
 </script>
@@ -39,6 +40,11 @@ const largura = (v) => `${(v / maiorAluguel) * 100}%`
           </dl>
         </div>
       </div>
+      <SectionCta
+        label="Quero ver os contratos de aluguel"
+        origem="renda"
+        mensagem="Olá, Mac! Vi a renda de R$ 4.100/mês do imóvel no Novo Paraíso. Pode me enviar os detalhes dos contratos de aluguel de cada casa?"
+      />
     </div>
   </section>
 </template>

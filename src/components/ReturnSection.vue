@@ -2,6 +2,7 @@
 import { imovel } from '../data/imovel.js'
 import { rendaAnual, rendaPotencialAnual, retornoAtual, retornoPotencial } from '../lib/investimento.js'
 import { reais, percent } from '../lib/format.js'
+import SectionCta from './SectionCta.vue'
 </script>
 
 <template>
@@ -32,6 +33,12 @@ import { reais, percent } from '../lib/format.js'
         Retorno bruto calculado sobre o valor pedido ({{ reais(imovel.valor) }}), antes de IPTU, manutenção e impostos sobre aluguel.
         Os aluguéis são os contratos vigentes; o potencial de {{ reais(imovel.rendaPotencial) }} é uma estimativa.
       </p>
+      <SectionCta
+        label="Quero fazer uma proposta"
+        origem="retorno"
+        mensagem="Olá, Mac! Tenho interesse no imóvel de renda do Novo Paraíso (R$ 700.000) e gostaria de conversar sobre uma proposta."
+        nota="Propostas e formas de pagamento são analisadas."
+      />
     </div>
   </section>
 </template>
